@@ -2,6 +2,14 @@
   'use strict';
   document.documentElement.classList.add('js');
 
+  // Right-click and drag are switched off on images (Hernan, Nov 6). A deterrent only: it doesn't stop screenshots.
+  document.addEventListener('contextmenu', function (e) {
+    if (e.target.closest && e.target.closest('img, a.lb')) e.preventDefault();
+  });
+  document.addEventListener('dragstart', function (e) {
+    if (e.target.tagName === 'IMG') e.preventDefault();
+  });
+
   // Email: assembled here so the address never appears as plain text in the HTML.
   var addr = ['booking', ['arrecifephotography', 'com'].join('.')].join('@');
   document.querySelectorAll('.js-email').forEach(function (a) {
