@@ -7,7 +7,7 @@
     if (e.target.closest && e.target.closest('img, a.lb')) e.preventDefault();
   });
   document.addEventListener('dragstart', function (e) {
-    if (e.target.tagName === 'IMG') e.preventDefault();
+    if (e.target.closest && e.target.closest('img, a.lb')) e.preventDefault();
   });
 
   // Email: assembled here so the address never appears as plain text in the HTML.
